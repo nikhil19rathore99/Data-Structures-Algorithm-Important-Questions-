@@ -582,7 +582,7 @@ int printComb(vector<int>& arr, int i, int sz, vector<int> t){
     }
     return c;
 }
-int main(){
+nt main(){
     // vector<int> arr{1, 4, 0, 0, 3, 10, 5};
     // subarrayWithGivenSum(arr,7);
     // vector<int> eqarr{-7, 1, 5, 2, -4, 3, 0};
