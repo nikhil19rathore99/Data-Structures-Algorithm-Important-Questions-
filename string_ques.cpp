@@ -866,6 +866,18 @@ int minOperationConvertA2B(string a, string b){
     }
     return r;
 }
+int countSubSequenceDivisiblebyK(string s, int n){
+    vector<vector<int>> dp(s.length(),vector<int>(n,0));
+    dp[0][(s[0]-'0')%n]++;
+    for(int i=1;i<dp.size();i++){
+        dp[i][(s[i]-'0')%n]++;  
+        for(int j=0;j<n;j++){
+            dp[i][j]+=dp[i-1][j];
+            dp[i][(j*10+(s[i]-'0'))%n]+=dp[i-1][j];
+        }
+    }
+    return dp[s.length()-1][0];
+}
 int main()
 {
     // vector<string> v{"may", "student", "students", "dog",
@@ -913,5 +925,6 @@ int main()
     // printAllWaysInBrackets("abcd",0,"");
     // printZigZag("ABCDEFGH",2);
     // kMP("ABABDABACDABABCABAB","ABABCABAB");
-    cout<<minOperationConvertA2B("EACBD","EABCD")<<endl;
+    // cout<<minOperationConvertA2B("EACBD","EABCD")<<endl;
+    cout<<countSubSequenceDivisiblebyK("1234",4)<<endl;
 }
